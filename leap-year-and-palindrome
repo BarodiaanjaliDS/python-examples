@@ -1,0 +1,43 @@
+# Check a year whether its a leap year or palindrome or both.
+# Leap Year and Palindrome
+
+def check_lp(n):
+    # For century year (divisible by 100)
+    # century year divisible by 400 => leap year
+    if ((n % 400 == 0) and (n % 100 == 0)):
+        return "LeapYear"
+    # For non-century year
+    # non-century year divisible by 4 => leap year
+    elif (n % 4 == 0) and (n % 100 != 0):
+        return "LeapYear"
+    # if not divisible by 400 and 4 => not a leap year
+    else:
+        return "NotLeapYear"
+
+def palindrome_input_list(n):
+    palindrome_input = []
+    while(n):
+        palindrome_input.append(n % 10)
+        n = n // 10
+    return palindrome_input
+
+def check_palindrome(n):
+    pn = palindrome_input_list(n)
+    loop = int(len(pn)/2)
+
+    for i in range(0, loop):
+        if pn[i] == pn[-1-i]:
+            continue
+        else:
+            return "NotPalindrome"
+    return "Palindrome"
+
+
+def leapyear_palindrome_checker(n):
+    res = check_lp(n) + ", " + check_palindrome(n)
+    return res
+
+n = [12321,1600, 2000, 2012, 1900, 1800, 1804, 2112]
+for i in n:
+    print("{0} => {1} ".format(i, leapyear_palindrome_checker(i)))
+
