@@ -1,0 +1,15 @@
+# check a number is binary or not
+
+num = int(input("Enter a number "))
+while(num > 0):
+    digit = num%10
+    if(digit!=0 and digit!=1):
+        print("Not a binary number")
+        break
+    num = num//10
+    if num == 0:
+        print("Number is binary")
+
+
+
+
