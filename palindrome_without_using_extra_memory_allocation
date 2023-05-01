@@ -1,0 +1,37 @@
+# Problem Statement:Please write a method for the following program without usng any additional memory allocations.
+# For a given string find if palindrome only for alphabetic (case insensitive).
+#
+# E.g.  “Ha! I rush to my lion oily moths, Uriah!” will return true.
+#       “! ?” will return false.
+
+
+# check a character is alphabate or not
+def isAlphabetic(c):
+    return c.isalpha()
+    
+# Get the index of character from the front and back
+def get_me_char_index(str, p, fromthefront):
+    while(p>=0):
+        if isAlphabetic(str[p]):
+            break
+        if fromthefront:
+            p = p + 1
+        else:
+            p = p - 1
+    return p
+
+# check the string is palindrome or not
+def palindrome(str):
+    strlength = len(str)
+    p1 = 0
+    p2 = strlength - 1
+    res = True
+    while(p1< p2):
+        p1 = get_me_char_index(str, p1, fromthefront=True)
+        p2 = get_me_char_index(str, p2, fromthefront=False)
+        if str[p1].lower() != str[p2].lower():
+            res = False
+            break
+        p1 = p1+1
+        p2 = p2-1
+    return res
