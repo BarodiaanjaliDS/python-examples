@@ -1,0 +1,12 @@
+# find duplicate from list
+h = ["hello", 10,20,20,40, 30, 60, 40]
+
+def find_duplicates(h):
+    res= []
+    for elm in h:
+        if h.count(elm) >1 and elm not in res:
+            res.append(elm)
+    return res
+ 
+ 
+print(find_duplicates(h))
